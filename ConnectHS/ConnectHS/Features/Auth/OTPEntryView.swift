@@ -14,6 +14,7 @@ struct OTPEntryView: View {
                 Text("otp.title")
                     .font(.chDisplay)
                     .foregroundStyle(.chInk)
+                    .accessibilityIdentifier("otp.title")
 
                 Text("otp.subtitle \(viewModel.phoneNumber)")
                     .font(.chBody)
@@ -27,6 +28,7 @@ struct OTPEntryView: View {
                     .focused($isCodeFocused)
                     .frame(height: 56)
                     .padding(.horizontal, Spacing.xxl)
+                    .accessibilityIdentifier("otp.codeField")
 
                 if let error = viewModel.otpError {
                     Text(error)
@@ -49,6 +51,7 @@ struct OTPEntryView: View {
                 }
                 .disabled(!isCodeValid)
                 .padding(.horizontal, Spacing.md)
+                .accessibilityIdentifier("otp.verify")
 
                 Button {
                     Task { await viewModel.sendOTP() }

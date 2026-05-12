@@ -151,6 +151,7 @@ struct ProfileView: View {
                     } label: {
                         Text("profile.signOut")
                     }
+                    .accessibilityIdentifier("profile.signOut")
                 }
 
                 // Delete account (App Store guideline 5.1.1(v))
@@ -168,6 +169,7 @@ struct ProfileView: View {
                         }
                     }
                     .disabled(deletingAccount)
+                    .accessibilityIdentifier("profile.deleteAccount")
                 }
             }
             .scrollContentBackground(.hidden)

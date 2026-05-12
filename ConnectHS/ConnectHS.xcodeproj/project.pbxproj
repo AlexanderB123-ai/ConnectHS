@@ -16,6 +16,7 @@
 		5A1A5E1000000000000000A4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B4 /* Storage */; };
 		60ECB238CB2E6A08E59C3EA7 /* ConnectHSWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7CA4885579972A96A455F552 /* ConnectHSWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC1CE442B13923397CC22174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230D5349F06DAB360D946AD5 /* Foundation.framework */; };
+		BFB210691B9ED144DBA8B49F /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102648B4BB24ADA4715F922 /* AuthViewModelTests.swift */; };
 		CD9CF7A7A8AB89456FC855F5 /* InviteURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */; };
 		D7EACC564B69633314797CFA /* PostDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */; };
 		DBDCB322521748FEA7C307DC /* AppLaunchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317746DAC6E912BA41BBE9B /* AppLaunchUITests.swift */; };
@@ -73,6 +74,7 @@
 		C317746DAC6E912BA41BBE9B /* AppLaunchUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppLaunchUITests.swift; sourceTree = "<group>"; };
 		DD5E71DB8A5F859F067FAA5E /* Config.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E6E5EBD42FAB5F4D0010BA13 /* ConnectHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F102648B4BB24ADA4715F922 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -150,6 +152,7 @@
 				B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */,
 				6BB89123FA398718B8E9BDB9 /* FeedViewModelTests.swift */,
 				3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */,
+				F102648B4BB24ADA4715F922 /* AuthViewModelTests.swift */,
 			);
 			name = ConnectHSTests;
 			path = ConnectHSTests;
@@ -387,6 +390,7 @@
 				4D12EE4C9476FB56D2239045 /* ReactionTypeTests.swift in Sources */,
 				2A542A357E7E051A3F01520D /* FeedViewModelTests.swift in Sources */,
 				D7EACC564B69633314797CFA /* PostDetailViewModelTests.swift in Sources */,
+				BFB210691B9ED144DBA8B49F /* AuthViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

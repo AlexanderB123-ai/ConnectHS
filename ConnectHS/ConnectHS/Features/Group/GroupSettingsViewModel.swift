@@ -47,7 +47,14 @@ final class GroupSettingsViewModel {
         }
     }
 
+    // All mutations early-return if another mutation is already in flight.
+    // `actionInFlight` was only used for a spinner before; the View ignored
+    // a second tap visually but the underlying Task still fired. With the
+    // guard, a rapid double-tap on "remove member" no longer issues two
+    // RPCs — the second is dropped until the first settles.
+
     func generateInvite() async {
+        guard !actionInFlight else { return }
         actionInFlight = true
         defer { actionInFlight = false }
         do {
@@ -60,6 +67,7 @@ final class GroupSettingsViewModel {
     }
 
     func updateGroup(name: String, emoji: String?) async {
+        guard !actionInFlight else { return }
         actionInFlight = true
         defer { actionInFlight = false }
         do {
@@ -73,6 +81,7 @@ final class GroupSettingsViewModel {
     }
 
     func promoteAdmin(_ member: GroupMember) async {
+        guard !actionInFlight else { return }
         actionInFlight = true
         defer { actionInFlight = false }
         do {
@@ -85,6 +94,7 @@ final class GroupSettingsViewModel {
     }
 
     func removeMember(_ member: GroupMember) async {
+        guard !actionInFlight else { return }
         actionInFlight = true
         defer { actionInFlight = false }
         do {
@@ -98,6 +108,7 @@ final class GroupSettingsViewModel {
     }
 
     func blockMember(_ member: GroupMember) async {
+        guard !actionInFlight else { return }
         actionInFlight = true
         defer { actionInFlight = false }
         do {
@@ -109,6 +120,7 @@ final class GroupSettingsViewModel {
     }
 
     func leaveGroup() async -> Bool {
+        guard !actionInFlight else { return false }
         actionInFlight = true
         defer { actionInFlight = false }
         do {

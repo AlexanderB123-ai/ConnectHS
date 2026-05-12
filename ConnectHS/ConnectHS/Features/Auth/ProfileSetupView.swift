@@ -33,6 +33,7 @@ struct ProfileSetupView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: CornerRadius.md).fill(.white)
                             )
+                            .accessibilityIdentifier("profile.setup.name")
 
                         Button {
                             withAnimation { showOptional.toggle() }
@@ -73,6 +74,7 @@ struct ProfileSetupView: View {
                     }
                     .disabled(!isFormValid)
                     .padding(.horizontal, Spacing.md)
+                    .accessibilityIdentifier("profile.setup.cta")
 
                     Spacer()
                         .frame(height: Spacing.xxl)

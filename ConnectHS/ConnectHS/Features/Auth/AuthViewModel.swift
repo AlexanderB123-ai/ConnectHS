@@ -328,7 +328,12 @@ final class AuthViewModel {
         }
     }
 
-    private func formatPhoneE164(_ phone: String) -> String {
+    /// Pure function — no MainActor dependence — so unit tests can verify
+    /// formatting without instantiating AuthViewModel. Marked `nonisolated`
+    /// to opt out of the project-wide `SWIFT_DEFAULT_ACTOR_ISOLATION =
+    /// MainActor` default; without this, the static method inherits
+    /// MainActor and tests in nonisolated contexts can't call it.
+    nonisolated static func formatPhoneE164(_ phone: String, countryCode: String) -> String {
         let digits = phone.filter(\.isNumber)
         let code = countryCode.filter(\.isNumber)
         // If the user typed their own country code into the number field
@@ -343,13 +348,17 @@ final class AuthViewModel {
         return "+\(digits)"
     }
 
+    private func formatPhoneE164(_ phone: String) -> String {
+        Self.formatPhoneE164(phone, countryCode: countryCode)
+    }
+
     /// Map the device region to a default E.164 country code (digits-only).
     /// Covers the launch-window target (US/CA = "1") plus a small set of
     /// commonly-encountered locales for international testers. Anything
     /// unmapped falls back to "1" — the user can override in the picker.
     /// Keeping this table short on purpose; a full country list belongs in
     /// a dedicated picker view, not here.
-    static func defaultCountryCode() -> String {
+    nonisolated static func defaultCountryCode() -> String {
         let region = Locale.current.region?.identifier ?? "US"
         switch region {
         case "US", "CA": return "1"

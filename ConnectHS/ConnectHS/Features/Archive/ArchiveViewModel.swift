@@ -35,10 +35,17 @@ final class ArchiveViewModel {
 
     private let pageSize = 60
     private var oldestPromptDate: String?
+    /// Bumped on every fresh `load()` invocation. If a slow in-flight
+    /// `load()` finishes after a newer one started, its results are
+    /// discarded — protects against rapid filter-toggle + pull-to-refresh
+    /// + scene-phase-reload all firing within a few hundred ms.
+    private var loadGeneration: UInt64 = 0
 
     // MARK: - Lifecycle
 
     func load() async {
+        loadGeneration &+= 1
+        let myGeneration = loadGeneration
         loadState = .loading
         sections = []
         oldestPromptDate = nil
@@ -48,6 +55,8 @@ final class ArchiveViewModel {
             if groups.isEmpty {
                 groups = try await groupService.fetchGroups()
             }
+            // A newer load() started while we were fetching groups — bail.
+            guard myGeneration == loadGeneration else { return }
             if selectedGroup == nil {
                 selectedGroup = groups.first
             }
@@ -56,8 +65,10 @@ final class ArchiveViewModel {
                 return
             }
             try await fetchPage(groupId: group.id, reset: true)
+            guard myGeneration == loadGeneration else { return }
             loadState = sections.isEmpty ? .empty : .posts
         } catch {
+            guard myGeneration == loadGeneration else { return }
             logger.error("Archive load failed: \(error.localizedDescription)")
             loadState = .error("couldn't load archive. try again.")
         }
