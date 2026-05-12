@@ -20,15 +20,24 @@ struct PhoneEntryView: View {
                     .foregroundStyle(.chInkSoft)
 
                 HStack(spacing: Spacing.sm) {
-                    Text("+1")
-                        .font(.chHeadline)
-                        .foregroundStyle(.chInk)
-                        .padding(.horizontal, Spacing.md)
-                        .frame(height: 56)
-                        .background(
-                            RoundedRectangle(cornerRadius: CornerRadius.md)
-                                .fill(.white)
-                        )
+                    HStack(spacing: 2) {
+                        Text("+")
+                            .font(.chHeadline)
+                            .foregroundStyle(.chInk)
+                        TextField("1", text: $viewModel.countryCode)
+                            .font(.chHeadline)
+                            .foregroundStyle(.chInk)
+                            .keyboardType(.numberPad)
+                            .frame(width: 44)
+                            .multilineTextAlignment(.leading)
+                            .accessibilityLabel(Text("phone.countryCode.label"))
+                    }
+                    .padding(.horizontal, Spacing.md)
+                    .frame(height: 56)
+                    .background(
+                        RoundedRectangle(cornerRadius: CornerRadius.md)
+                            .fill(.white)
+                    )
 
                     TextField("(555) 123-4567", text: $viewModel.phoneNumber)
                         .font(.chHeadline)

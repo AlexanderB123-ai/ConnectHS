@@ -24,6 +24,7 @@ struct WelcomeView: View {
                 Text("welcome.title")
                     .font(.system(size: 42, weight: .semibold, design: .rounded))
                     .foregroundStyle(.chInk)
+                    .accessibilityIdentifier("welcome.title")
 
                 Text("welcome.tagline")
                     .font(.chBody)
@@ -57,6 +58,7 @@ struct WelcomeView: View {
                                 .stroke(.chInk, lineWidth: 1.5)
                         )
                 }
+                .accessibilityIdentifier("welcome.continue.phone")
 
                 if let message = siwaErrorMessage {
                     Text(message)

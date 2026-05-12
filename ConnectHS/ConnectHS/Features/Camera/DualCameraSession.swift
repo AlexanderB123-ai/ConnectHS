@@ -20,6 +20,12 @@ final class DualCameraSession: NSObject, @unchecked Sendable {
     private(set) var frontPreviewLayer: AVCaptureVideoPreviewLayer?
 
     private var pendingDelegates: [PhotoCaptureDelegate] = []
+    /// Tracks the inner Task spawned inside `capture()` so it can be
+    /// cancelled when the session is stopped. Without this, dismissing
+    /// the camera view mid-capture leaves the Task running until AVF
+    /// delivers (or times out) the orphaned photo — wasted work and a
+    /// latent footgun if a future change makes the delegate side effectful.
+    private var captureTask: Task<Void, Never>?
 
     static var isSupported: Bool { AVCaptureMultiCamSession.isMultiCamSupported }
 
@@ -123,8 +129,12 @@ final class DualCameraSession: NSObject, @unchecked Sendable {
 
     func stop() {
         queue.async { [weak self] in
-            guard let self, self.session.isRunning else { return }
-            self.session.stopRunning()
+            guard let self else { return }
+            self.captureTask?.cancel()
+            self.captureTask = nil
+            if self.session.isRunning {
+                self.session.stopRunning()
+            }
         }
     }
 
@@ -150,13 +160,19 @@ final class DualCameraSession: NSObject, @unchecked Sendable {
                 self.backOutput.capturePhoto(with: backSettings, delegate: backDelegate)
                 self.frontOutput.capturePhoto(with: frontSettings, delegate: frontDelegate)
 
-                Task {
+                self.captureTask?.cancel()
+                self.captureTask = Task { [weak self] in
+                    guard let self else { return }
                     do {
                         async let back = backDelegate.awaitData()
                         async let front = frontDelegate.awaitData()
                         let pair = try await (front: front, back: back)
                         await self.dropDelegates([backDelegate, frontDelegate])
-                        cont.resume(returning: pair)
+                        if Task.isCancelled {
+                            cont.resume(throwing: CancellationError())
+                        } else {
+                            cont.resume(returning: pair)
+                        }
                     } catch {
                         await self.dropDelegates([backDelegate, frontDelegate])
                         cont.resume(throwing: error)
@@ -179,9 +195,18 @@ final class DualCameraSession: NSObject, @unchecked Sendable {
 nonisolated final class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate, @unchecked Sendable {
 
     private var continuation: CheckedContinuation<Data, Error>?
+    /// Set after `awaitData` is called so the second caller fails fast
+    /// instead of silently overwriting the first continuation (which would
+    /// leak it forever). One delegate is meant to satisfy one photo.
+    private var awaited = false
 
     func awaitData() async throws -> Data {
         try await withCheckedThrowingContinuation { cont in
+            guard !awaited else {
+                cont.resume(throwing: CameraError.captureFailed)
+                return
+            }
+            awaited = true
             self.continuation = cont
         }
     }

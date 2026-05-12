@@ -19,7 +19,7 @@ You are a senior iOS engineer building **ConnectHS**, a closed-group iOS app tha
 - **Architecture:** MVVM, one folder per feature in `/Features`
 - **Camera:** AVFoundation `AVCaptureMultiCamSession` for true simultaneous dual-camera
 - **Widget:** WidgetKit + App Group shared container
-- **Local storage:** SwiftData (iOS 17+) for cache; source of truth is always Supabase
+- **Local storage:** none in v1 — Supabase is source of truth, with an App Group `UserDefaults` bridge for the widget payload (see `Shared/AppGroup/`). SwiftData (iOS 17+) is on the v1.1 roadmap for an offline cache; do NOT add it without explicit user approval, since it changes the persistence model.
 
 ---
 
@@ -38,7 +38,7 @@ ConnectHS/
 │   └── Profile/
 ├── Models/                    Codable structs matching Supabase tables
 ├── Services/                  SupabaseClient, AuthService, PostService, etc.
-├── Storage/                   SwiftData models, image cache
+├── Storage/                   (deferred to v1.1) SwiftData models, image cache
 ├── Shared/                    design tokens, reusable Views, utilities
 └── Resources/                 Assets.xcassets, Localizable.xcstrings
 ConnectHSWidget/               WidgetKit extension target

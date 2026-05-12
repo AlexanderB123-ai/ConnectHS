@@ -13,6 +13,14 @@ final class PostDetailViewModel {
     private let postService = PostService()
     private let logger = Logger(subsystem: "com.connecths.app", category: "PostDetailVM")
 
+    /// Reactions currently mid-flight. Rapid double-tap on the same reaction
+    /// would otherwise race: both calls snapshot `wasOn` before either's
+    /// optimistic flip lands, and the rollback paths over-correct. Skipping
+    /// while a toggle is in flight is the simplest correct behavior — the
+    /// user's second tap is dropped, but they can re-tap once the first
+    /// settles. Per-reaction (not global) so heart + fire can fly together.
+    private var inFlight: Set<ReactionType> = []
+
     func bootstrap(post: FeedPost, userId: UUID) async {
         seedReactionCounts(from: post)
         // Both calls are fire-and-forget — they assign to viewmodel state on
@@ -24,6 +32,10 @@ final class PostDetailViewModel {
     }
 
     func toggle(_ reaction: ReactionType, postId: UUID) async {
+        guard !inFlight.contains(reaction) else { return }
+        inFlight.insert(reaction)
+        defer { inFlight.remove(reaction) }
+
         let wasOn = myReactions.contains(reaction)
 
         // Optimistic flip.

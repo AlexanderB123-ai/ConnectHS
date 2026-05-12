@@ -25,6 +25,11 @@ final class AuthViewModel {
     // MARK: - Phone OTP state
 
     var phoneNumber = ""
+    /// E.164 country code without the leading `+`. Default derived from the
+    /// device locale (US/Canada/etc. → "1"); user can edit before sending
+    /// the OTP. Anything the user types as digits-only is accepted; we trim
+    /// non-digits and prepend the `+` when handing off to Supabase.
+    var countryCode: String = AuthViewModel.defaultCountryCode()
     var otpCode = ""
     var otpError: String?
     var isResendEnabled = false
@@ -325,11 +330,40 @@ final class AuthViewModel {
 
     private func formatPhoneE164(_ phone: String) -> String {
         let digits = phone.filter(\.isNumber)
-        if digits.hasPrefix("1") && digits.count == 11 {
+        let code = countryCode.filter(\.isNumber)
+        // If the user typed their own country code into the number field
+        // (e.g. they pasted "+44 7700 900123" or "447700900123"), respect
+        // it and don't double-prefix.
+        if !code.isEmpty, digits.hasPrefix(code) {
             return "+\(digits)"
-        } else if digits.count == 10 {
-            return "+1\(digits)"
+        }
+        if !code.isEmpty {
+            return "+\(code)\(digits)"
         }
         return "+\(digits)"
+    }
+
+    /// Map the device region to a default E.164 country code (digits-only).
+    /// Covers the launch-window target (US/CA = "1") plus a small set of
+    /// commonly-encountered locales for international testers. Anything
+    /// unmapped falls back to "1" — the user can override in the picker.
+    /// Keeping this table short on purpose; a full country list belongs in
+    /// a dedicated picker view, not here.
+    static func defaultCountryCode() -> String {
+        let region = Locale.current.region?.identifier ?? "US"
+        switch region {
+        case "US", "CA": return "1"
+        case "GB": return "44"
+        case "IN": return "91"
+        case "AU": return "61"
+        case "DE": return "49"
+        case "FR": return "33"
+        case "MX": return "52"
+        case "BR": return "55"
+        case "JP": return "81"
+        case "KR": return "82"
+        case "CN": return "86"
+        default: return "1"
+        }
     }
 }

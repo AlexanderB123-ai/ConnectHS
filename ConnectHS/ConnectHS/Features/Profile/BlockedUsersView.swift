@@ -7,6 +7,7 @@ struct BlockedUsersView: View {
     @State private var blocks: [BlockedUser] = []
     @State private var loadState: LoadState = .loading
     @State private var actionInFlight: Set<UUID> = []
+    @State private var unblockError: String?
 
     private enum LoadState: Sendable { case loading, loaded, error }
     private let service = BlockService()
@@ -40,6 +41,14 @@ struct BlockedUsersView: View {
         .navigationTitle(Text("blocks.title"))
         .navigationBarTitleDisplayMode(.inline)
         .task { await load() }
+        .alert(Text("blocks.error.title"), isPresented: Binding(
+            get: { unblockError != nil },
+            set: { if !$0 { unblockError = nil } }
+        )) {
+            Button(role: .cancel) { unblockError = nil } label: { Text("common.ok") }
+        } message: {
+            Text(unblockError ?? "")
+        }
     }
 
     private var emptyView: some View {
@@ -104,8 +113,7 @@ struct BlockedUsersView: View {
             try await service.unblock(targetId: block.userId)
             blocks.removeAll { $0.userId == block.userId }
         } catch {
-            // Surface inline error on the list row in a future polish pass;
-            // for now log via the system console (the service layer logs too).
+            unblockError = String(localized: "blocks.error.unblock")
         }
     }
 

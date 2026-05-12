@@ -29,6 +29,14 @@ actor ImagePipeline {
     }
 
     private func encode(_ image: UIImage, maxLongEdge: CGFloat, quality: CGFloat) -> Data? {
+        // PRIVACY: re-encoding through `UIGraphicsImageRenderer` (in
+        // `downscale`) + `UIImage.jpegData` strips EXIF — including GPS
+        // coordinates baked in by Camera.app. We rely on this: the
+        // closed-graph model is for friends, but a leaked image with
+        // home-address EXIF would be a hard breach. Any future refactor
+        // that switches to `CGImageDestination` with kCGImagePropertyExifDictionary
+        // or to a metadata-preserving Core Image path MUST keep this
+        // guarantee.
         let resized = downscale(image, maxLongEdge: maxLongEdge)
         return resized.jpegData(compressionQuality: quality)
     }

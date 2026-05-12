@@ -13,6 +13,7 @@ struct FeedView: View {
     @State private var reportTarget: ReportTargetPayload?
     @State private var showReportConfirmation = false
     @State private var blockConfirmation: BlockConfirmation?
+    @State private var blockError: String?
 
     @Environment(\.scenePhase) private var scenePhase
 
@@ -38,7 +39,7 @@ struct FeedView: View {
     private let groupService = GroupService()
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.chCream.ignoresSafeArea()
 
             switch viewModel.loadState {
@@ -51,7 +52,17 @@ struct FeedView: View {
             case .posts:
                 feedContent
             }
+
+            // Non-blocking reload error banner: shows when a background
+            // reload (pull-to-refresh, foreground-resume) fails entirely.
+            // Stale data stays visible underneath — better than wiping
+            // the feed on a transient network blip.
+            if let reloadError = viewModel.reloadError {
+                reloadErrorBanner(reloadError)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
         }
+        .animation(.easeInOut(duration: 0.25), value: viewModel.reloadError)
         .navigationTitle(viewModel.selectedGroup?.name ?? String(localized: "feed.title.fallback"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -130,6 +141,14 @@ struct FeedView: View {
             Button(role: .cancel) { inviteError = nil } label: { Text("common.ok") }
         } message: {
             Text(inviteError ?? "")
+        }
+        .alert(Text("blocks.error.title"), isPresented: Binding(
+            get: { blockError != nil },
+            set: { if !$0 { blockError = nil } }
+        )) {
+            Button(role: .cancel) { blockError = nil } label: { Text("common.ok") }
+        } message: {
+            Text(blockError ?? "")
         }
         .navigationDestination(for: PostCarousel.self) { carousel in
             PostDetailView(carousel: carousel, currentUserId: user.id)
@@ -252,8 +271,7 @@ struct FeedView: View {
             try await blockService.block(targetId: userId)
             await viewModel.reload()
         } catch {
-            // Surface inline in a future polish pass; for now, silently fail
-            // — the most common failure (network) recovers on retry.
+            blockError = String(localized: "blocks.error.block")
         }
     }
 
@@ -432,6 +450,35 @@ struct FeedView: View {
                     )
             }
         }
+    }
+
+    private func reloadErrorBanner(_ message: String) -> some View {
+        HStack(spacing: Spacing.sm) {
+            Image(systemName: "wifi.exclamationmark")
+                .foregroundStyle(.chWarning)
+            Text(message)
+                .font(.chCaption)
+                .foregroundStyle(.chInk)
+                .lineLimit(2)
+            Spacer(minLength: 0)
+            Button {
+                viewModel.dismissReloadError()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.chInkSoft)
+            }
+            .accessibilityLabel(Text("feed.error.refresh.dismiss"))
+        }
+        .padding(.horizontal, Spacing.md)
+        .padding(.vertical, Spacing.sm)
+        .background(
+            RoundedRectangle(cornerRadius: CornerRadius.md)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.06), radius: 6, y: 2)
+        )
+        .padding(.horizontal, Spacing.md)
+        .padding(.top, Spacing.sm)
     }
 
     private func errorView(_ message: String) -> some View {

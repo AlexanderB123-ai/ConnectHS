@@ -14,6 +14,10 @@ final class SequentialCameraSession: NSObject, @unchecked Sendable {
     private var currentInput: AVCaptureDeviceInput?
     private let output = AVCapturePhotoOutput()
     private var pendingDelegates: [PhotoCaptureDelegate] = []
+    /// See DualCameraSession.captureTask — same rationale: cancel the
+    /// in-flight delegate-await Task on stop() so the dismissed-mid-capture
+    /// path doesn't leave orphaned work waiting on AVF.
+    private var captureTask: Task<Void, Never>?
     private(set) var previewLayer: AVCaptureVideoPreviewLayer?
 
     func configure() async throws {
@@ -78,8 +82,12 @@ final class SequentialCameraSession: NSObject, @unchecked Sendable {
 
     func stop() {
         queue.async { [weak self] in
-            guard let self, self.session.isRunning else { return }
-            self.session.stopRunning()
+            guard let self else { return }
+            self.captureTask?.cancel()
+            self.captureTask = nil
+            if self.session.isRunning {
+                self.session.stopRunning()
+            }
         }
     }
 
@@ -99,11 +107,17 @@ final class SequentialCameraSession: NSObject, @unchecked Sendable {
                 let settings = AVCapturePhotoSettings()
                 settings.flashMode = .off
                 self.output.capturePhoto(with: settings, delegate: delegate)
-                Task {
+                self.captureTask?.cancel()
+                self.captureTask = Task { [weak self] in
+                    guard let self else { return }
                     do {
                         let data = try await delegate.awaitData()
                         await self.dropDelegate(delegate)
-                        cont.resume(returning: data)
+                        if Task.isCancelled {
+                            cont.resume(throwing: CancellationError())
+                        } else {
+                            cont.resume(returning: data)
+                        }
                     } catch {
                         await self.dropDelegate(delegate)
                         cont.resume(throwing: error)

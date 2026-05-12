@@ -200,6 +200,28 @@
         }
       }
     },
+    "blocks.error.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "couldn't complete"
+          }
+        }
+      }
+    },
+    "blocks.error.unblock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "couldn't unblock. try again."
+          }
+        }
+      }
+    },
     "blocks.since %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -713,6 +735,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "couldn't load. try again."
+          }
+        }
+      }
+    },
+    "feed.error.refresh" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "couldn't refresh. showing cached moments."
+          }
+        }
+      }
+    },
+    "feed.error.refresh.dismiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dismiss"
           }
         }
       }
@@ -1561,6 +1605,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "verify"
+          }
+        }
+      }
+    },
+    "phone.countryCode.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "country code"
           }
         }
       }
