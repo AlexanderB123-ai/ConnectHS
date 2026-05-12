@@ -3,7 +3,27 @@ import Supabase
 import PostgREST
 import Storage
 
-struct PostService: Sendable {
+/// The narrow surface the view models actually call. Extracted so VM tests
+/// can inject a stub without standing up a real Supabase client. The full
+/// `PostService` struct conforms; production call sites are unaffected.
+protocol PostServicing: Sendable {
+    func getFeed(groupId: UUID, date: Date) async throws -> [FeedPost]
+    func getMemories(groupId: UUID) async throws -> [MemoryPost]
+    func toggleReaction(postId: UUID, reaction: ReactionType) async throws -> Bool
+    func markViewed(postId: UUID) async throws
+    func myReactions(postId: UUID, userId: UUID) async throws -> Set<ReactionType>
+}
+
+extension PostServicing {
+    /// Convenience overload so call sites can keep using `getFeed(groupId:)`
+    /// without explicitly threading `Date()` through. Protocol-level default
+    /// arguments aren't dispatched, so we provide it as an extension.
+    func getFeed(groupId: UUID) async throws -> [FeedPost] {
+        try await getFeed(groupId: groupId, date: Date())
+    }
+}
+
+struct PostService: Sendable, PostServicing {
 
     nonisolated static let postsBucket = "posts"
 

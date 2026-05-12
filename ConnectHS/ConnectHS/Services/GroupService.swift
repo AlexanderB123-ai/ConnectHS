@@ -2,7 +2,14 @@ import Foundation
 import Supabase
 import PostgREST
 
-struct GroupService: Sendable {
+/// The narrow surface FeedViewModel actually calls. See PostServicing for
+/// rationale (injection seam for VM tests).
+protocol GroupServicing: Sendable {
+    func fetchGroups() async throws -> [FriendGroup]
+    func listMembers(groupId: UUID) async throws -> [GroupMember]
+}
+
+struct GroupService: Sendable, GroupServicing {
 
     func createGroup(name: String, emoji: String?) async throws -> UUID {
         let response: UUID = try await supabase

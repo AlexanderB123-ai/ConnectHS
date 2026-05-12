@@ -41,4 +41,32 @@ final class AppLaunchUITests: XCTestCase {
             "welcome.continue.phone element not found — the phone NavigationLink lost its .accessibilityIdentifier."
         )
     }
+
+    /// Tapping the phone CTA navigates to `PhoneEntryView`. Validates the
+    /// NavigationLink wiring without triggering any actual auth (no `send`
+    /// tap, no Supabase call). Useful as a structural check that
+    /// RootView/NavigationStack composition isn't broken.
+    @MainActor
+    func testTappingPhoneCTA_navigatesToPhoneEntry() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let phoneCTA = app.buttons["welcome.continue.phone"]
+        XCTAssertTrue(phoneCTA.waitForExistence(timeout: 10))
+        phoneCTA.tap()
+
+        // 10s timeout: NavigationStack push animation + simulator render
+        // can take several seconds on a cold automation session. Don't
+        // tighten this without testing on a clean sim.
+        let title = app.staticTexts["phone.title"]
+        XCTAssertTrue(
+            title.waitForExistence(timeout: 10),
+            "phone.title not found after tapping welcome's phone CTA — NavigationLink to PhoneEntryView may be broken."
+        )
+        let subtitle = app.staticTexts["phone.subtitle"]
+        XCTAssertTrue(
+            subtitle.waitForExistence(timeout: 3),
+            "phone.subtitle not found — PhoneEntryView layout regressed."
+        )
+    }
 }

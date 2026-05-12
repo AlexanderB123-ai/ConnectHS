@@ -28,9 +28,24 @@ final class FeedViewModel {
     private(set) var reloadError: String?
     var selectedGroup: FriendGroup?
 
-    private let postService = PostService()
-    private let groupService = GroupService()
+    private let postService: PostServicing
+    private let groupService: GroupServicing
     private let logger = Logger(subsystem: "com.connecths.app", category: "FeedVM")
+
+    /// Nil defaults + in-body initialization keeps the implicit MainActor
+    /// isolation on the service structs from leaking into the call site
+    /// (default-arg expressions are evaluated as nonisolated, which would
+    /// otherwise produce "call to main actor-isolated initializer in a
+    /// synchronous nonisolated context" warnings under Swift 6 strict
+    /// concurrency on this project's `SWIFT_DEFAULT_ACTOR_ISOLATION =
+    /// MainActor` setting).
+    init(
+        postService: PostServicing? = nil,
+        groupService: GroupServicing? = nil
+    ) {
+        self.postService = postService ?? PostService()
+        self.groupService = groupService ?? GroupService()
+    }
 
     private var realtimeTask: Task<Void, Never>?
     private var realtimeChannel: RealtimeChannelV2?

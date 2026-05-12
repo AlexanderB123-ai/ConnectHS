@@ -14,10 +14,12 @@ struct PhoneEntryView: View {
                 Text("phone.title")
                     .font(.chDisplay)
                     .foregroundStyle(.chInk)
+                    .accessibilityIdentifier("phone.title")
 
                 Text("phone.subtitle")
                     .font(.chBody)
                     .foregroundStyle(.chInkSoft)
+                    .accessibilityIdentifier("phone.subtitle")
 
                 HStack(spacing: Spacing.sm) {
                     HStack(spacing: 2) {

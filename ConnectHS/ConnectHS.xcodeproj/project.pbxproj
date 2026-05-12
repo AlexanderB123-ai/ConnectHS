@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1AEE84464458DB4769F74F19 /* LatestPostPayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */; };
+		2A542A357E7E051A3F01520D /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB89123FA398718B8E9BDB9 /* FeedViewModelTests.swift */; };
 		4D12EE4C9476FB56D2239045 /* ReactionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */; };
 		5A1A5E1000000000000000A1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B1 /* Supabase */; };
 		5A1A5E1000000000000000A2 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B2 /* Auth */; };
@@ -16,6 +17,7 @@
 		60ECB238CB2E6A08E59C3EA7 /* ConnectHSWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7CA4885579972A96A455F552 /* ConnectHSWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AC1CE442B13923397CC22174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230D5349F06DAB360D946AD5 /* Foundation.framework */; };
 		CD9CF7A7A8AB89456FC855F5 /* InviteURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */; };
+		D7EACC564B69633314797CFA /* PostDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */; };
 		DBDCB322521748FEA7C307DC /* AppLaunchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317746DAC6E912BA41BBE9B /* AppLaunchUITests.swift */; };
 		F101296B65EDFB92A85C05D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230D5349F06DAB360D946AD5 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -61,8 +63,10 @@
 /* Begin PBXFileReference section */
 		230D5349F06DAB360D946AD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		2C8426CA1E75F34F893F1021 /* ConnectHSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectHSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailViewModelTests.swift; sourceTree = "<group>"; };
 		4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LatestPostPayloadTests.swift; sourceTree = "<group>"; };
 		541DFA631B992FEED9E05DB8 /* ConnectHSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectHSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BB89123FA398718B8E9BDB9 /* FeedViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedViewModelTests.swift; sourceTree = "<group>"; };
 		7CA4885579972A96A455F552 /* ConnectHSWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ConnectHSWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InviteURLTests.swift; sourceTree = "<group>"; };
 		B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReactionTypeTests.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */,
 				4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */,
 				B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */,
+				6BB89123FA398718B8E9BDB9 /* FeedViewModelTests.swift */,
+				3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */,
 			);
 			name = ConnectHSTests;
 			path = ConnectHSTests;
@@ -379,6 +385,8 @@
 				CD9CF7A7A8AB89456FC855F5 /* InviteURLTests.swift in Sources */,
 				1AEE84464458DB4769F74F19 /* LatestPostPayloadTests.swift in Sources */,
 				4D12EE4C9476FB56D2239045 /* ReactionTypeTests.swift in Sources */,
+				2A542A357E7E051A3F01520D /* FeedViewModelTests.swift in Sources */,
+				D7EACC564B69633314797CFA /* PostDetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

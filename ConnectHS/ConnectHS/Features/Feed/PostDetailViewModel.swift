@@ -10,8 +10,14 @@ final class PostDetailViewModel {
     private(set) var myReactions: Set<ReactionType> = []
     private(set) var didMarkViewed = false
 
-    private let postService = PostService()
+    private let postService: PostServicing
     private let logger = Logger(subsystem: "com.connecths.app", category: "PostDetailVM")
+
+    /// See FeedViewModel.init — nil default avoids the
+    /// MainActor-isolated-init warning under strict concurrency.
+    init(postService: PostServicing? = nil) {
+        self.postService = postService ?? PostService()
+    }
 
     /// Reactions currently mid-flight. Rapid double-tap on the same reaction
     /// would otherwise race: both calls snapshot `wasOn` before either's
