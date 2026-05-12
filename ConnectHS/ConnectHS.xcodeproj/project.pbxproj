@@ -1,0 +1,711 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1AEE84464458DB4769F74F19 /* LatestPostPayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */; };
+		4D12EE4C9476FB56D2239045 /* ReactionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */; };
+		5A1A5E1000000000000000A1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B1 /* Supabase */; };
+		5A1A5E1000000000000000A2 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B2 /* Auth */; };
+		5A1A5E1000000000000000A3 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B3 /* PostgREST */; };
+		5A1A5E1000000000000000A4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B4 /* Storage */; };
+		60ECB238CB2E6A08E59C3EA7 /* ConnectHSWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7CA4885579972A96A455F552 /* ConnectHSWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD9CF7A7A8AB89456FC855F5 /* InviteURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */; };
+		F101296B65EDFB92A85C05D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230D5349F06DAB360D946AD5 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E454D6F43F2ED4D752A00E1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6E5EBCC2FAB5F4D0010BA13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6E5EBD32FAB5F4D0010BA13;
+			remoteInfo = ConnectHS;
+		};
+		E4B502E123EA560475BB2A47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6E5EBCC2FAB5F4D0010BA13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F17EB685A7D34885D6E84F0;
+			remoteInfo = ConnectHSWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8FBE2295078D8CC0B5DCC53B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				60ECB238CB2E6A08E59C3EA7 /* ConnectHSWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		230D5349F06DAB360D946AD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LatestPostPayloadTests.swift; sourceTree = "<group>"; };
+		541DFA631B992FEED9E05DB8 /* ConnectHSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectHSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA4885579972A96A455F552 /* ConnectHSWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ConnectHSWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InviteURLTests.swift; sourceTree = "<group>"; };
+		B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReactionTypeTests.swift; sourceTree = "<group>"; };
+		DD5E71DB8A5F859F067FAA5E /* Config.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E6E5EBD42FAB5F4D0010BA13 /* ConnectHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		792511BEC35577EB1B49814D /* Exceptions for "ConnectHS" folder in "ConnectHSWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared/AppGroup/LatestPostPayload.swift,
+				Shared/AppGroup/SharedKeys.swift,
+			);
+			target = 8F17EB685A7D34885D6E84F0 /* ConnectHSWidget */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E6E5EBD62FAB5F4D0010BA13 /* ConnectHS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				792511BEC35577EB1B49814D /* Exceptions for "ConnectHS" folder in "ConnectHSWidget" target */,
+			);
+			path = ConnectHS;
+			sourceTree = "<group>";
+		};
+		F5765CEF1D8503943AB8F428 /* ../ConnectHSWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = ../ConnectHSWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DD188FB39A537D480181DB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BC787ACBCEEFD09C5325A78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F101296B65EDFB92A85C05D3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6E5EBD12FAB5F4D0010BA13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1A5E1000000000000000A1 /* Supabase in Frameworks */,
+				5A1A5E1000000000000000A2 /* Auth in Frameworks */,
+				5A1A5E1000000000000000A3 /* PostgREST in Frameworks */,
+				5A1A5E1000000000000000A4 /* Storage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		454F14FFCB22ACCF3F268F00 /* ConnectHSTests */ = {
+			isa = PBXGroup;
+			children = (
+				7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */,
+				4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */,
+				B04CFCA11ED0C1728CCBA7FE /* ReactionTypeTests.swift */,
+			);
+			name = ConnectHSTests;
+			path = ConnectHSTests;
+			sourceTree = "<group>";
+		};
+		5AE9317D9A59939A230E6AE4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				230D5349F06DAB360D946AD5 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		BB2837751917EE81F4CAE7ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AE9317D9A59939A230E6AE4 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6E5EBCB2FAB5F4D0010BA13 = {
+			isa = PBXGroup;
+			children = (
+				E6E5EBD62FAB5F4D0010BA13 /* ConnectHS */,
+				E6E5EBD52FAB5F4D0010BA13 /* Products */,
+				F5765CEF1D8503943AB8F428 /* ../ConnectHSWidget */,
+				DD5E71DB8A5F859F067FAA5E /* Config.xcconfig */,
+				BB2837751917EE81F4CAE7ED /* Frameworks */,
+				454F14FFCB22ACCF3F268F00 /* ConnectHSTests */,
+			);
+			sourceTree = "<group>";
+		};
+		E6E5EBD52FAB5F4D0010BA13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6E5EBD42FAB5F4D0010BA13 /* ConnectHS.app */,
+				7CA4885579972A96A455F552 /* ConnectHSWidget.appex */,
+				541DFA631B992FEED9E05DB8 /* ConnectHSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B06164DEA713EFE581FAC6A /* ConnectHSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72C62C3468EF4462A88FC3A8 /* Build configuration list for PBXNativeTarget "ConnectHSTests" */;
+			buildPhases = (
+				CEB8A89B6DEBAB22143C1DE5 /* Sources */,
+				7BC787ACBCEEFD09C5325A78 /* Frameworks */,
+				B20515D90D05252C84B8CE84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77555695F13E236751359006 /* PBXTargetDependency */,
+			);
+			name = ConnectHSTests;
+			productName = ConnectHSTests;
+			productReference = 541DFA631B992FEED9E05DB8 /* ConnectHSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8F17EB685A7D34885D6E84F0 /* ConnectHSWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9148FCB9F917B5235810F03F /* Build configuration list for PBXNativeTarget "ConnectHSWidget" */;
+			buildPhases = (
+				537BF276D5A1DAB4A8520D54 /* Sources */,
+				1DD188FB39A537D480181DB9 /* Frameworks */,
+				DEFDB6B5756AF371AB539099 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F5765CEF1D8503943AB8F428 /* ../ConnectHSWidget */,
+			);
+			name = ConnectHSWidget;
+			productName = ConnectHSWidget;
+			productReference = 7CA4885579972A96A455F552 /* ConnectHSWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		E6E5EBD32FAB5F4D0010BA13 /* ConnectHS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6E5EBDF2FAB5F500010BA13 /* Build configuration list for PBXNativeTarget "ConnectHS" */;
+			buildPhases = (
+				E6E5EBD02FAB5F4D0010BA13 /* Sources */,
+				E6E5EBD12FAB5F4D0010BA13 /* Frameworks */,
+				E6E5EBD22FAB5F4D0010BA13 /* Resources */,
+				8FBE2295078D8CC0B5DCC53B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ACA42EEEE357E4D87A6C247 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E6E5EBD62FAB5F4D0010BA13 /* ConnectHS */,
+			);
+			name = ConnectHS;
+			packageProductDependencies = (
+				5A1A5E1000000000000000B1 /* Supabase */,
+				5A1A5E1000000000000000B2 /* Auth */,
+				5A1A5E1000000000000000B3 /* PostgREST */,
+				5A1A5E1000000000000000B4 /* Storage */,
+			);
+			productName = ConnectHS;
+			productReference = E6E5EBD42FAB5F4D0010BA13 /* ConnectHS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E6E5EBCC2FAB5F4D0010BA13 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					E6E5EBD32FAB5F4D0010BA13 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = E6E5EBCF2FAB5F4D0010BA13 /* Build configuration list for PBXProject "ConnectHS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E6E5EBCB2FAB5F4D0010BA13;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5A1A5E1000000000000000C1 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E6E5EBD52FAB5F4D0010BA13 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E6E5EBD32FAB5F4D0010BA13 /* ConnectHS */,
+				8F17EB685A7D34885D6E84F0 /* ConnectHSWidget */,
+				1B06164DEA713EFE581FAC6A /* ConnectHSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B20515D90D05252C84B8CE84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEFDB6B5756AF371AB539099 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6E5EBD22FAB5F4D0010BA13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		537BF276D5A1DAB4A8520D54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEB8A89B6DEBAB22143C1DE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD9CF7A7A8AB89456FC855F5 /* InviteURLTests.swift in Sources */,
+				1AEE84464458DB4769F74F19 /* LatestPostPayloadTests.swift in Sources */,
+				4D12EE4C9476FB56D2239045 /* ReactionTypeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6E5EBD02FAB5F4D0010BA13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		77555695F13E236751359006 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ConnectHS;
+			target = E6E5EBD32FAB5F4D0010BA13 /* ConnectHS */;
+			targetProxy = E454D6F43F2ED4D752A00E1A /* PBXContainerItemProxy */;
+		};
+		7ACA42EEEE357E4D87A6C247 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ConnectHSWidget;
+			target = 8F17EB685A7D34885D6E84F0 /* ConnectHSWidget */;
+			targetProxy = E4B502E123EA560475BB2A47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		26381A63F7C95BB8194AF2D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ../ConnectHSWidget/ConnectHSWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "ConnectHSWidget-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = connecths;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.connecths.ConnectHS.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		721EF95D3FCF4D52698D24DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ../ConnectHSWidget/ConnectHSWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "ConnectHSWidget-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = connecths;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.connecths.ConnectHS.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		95F57245899A12F639347CC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.connecths.ConnectHS.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConnectHS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ConnectHS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9E0C992CFE50700D0E9FAFA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.connecths.ConnectHS.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConnectHS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ConnectHS";
+			};
+			name = Debug;
+		};
+		E6E5EBDD2FAB5F500010BA13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E6E5EBDE2FAB5F500010BA13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E6E5EBE02FAB5F500010BA13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD5E71DB8A5F859F067FAA5E /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ConnectHS/ConnectHS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GCRUAWSZFH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "ConnectHS-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.connecths.ConnectHS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E6E5EBE12FAB5F500010BA13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD5E71DB8A5F859F067FAA5E /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ConnectHS/ConnectHS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GCRUAWSZFH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "ConnectHS-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.connecths.ConnectHS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		72C62C3468EF4462A88FC3A8 /* Build configuration list for PBXNativeTarget "ConnectHSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95F57245899A12F639347CC0 /* Release */,
+				9E0C992CFE50700D0E9FAFA1 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9148FCB9F917B5235810F03F /* Build configuration list for PBXNativeTarget "ConnectHSWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26381A63F7C95BB8194AF2D6 /* Debug */,
+				721EF95D3FCF4D52698D24DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6E5EBCF2FAB5F4D0010BA13 /* Build configuration list for PBXProject "ConnectHS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6E5EBDD2FAB5F500010BA13 /* Debug */,
+				E6E5EBDE2FAB5F500010BA13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6E5EBDF2FAB5F500010BA13 /* Build configuration list for PBXNativeTarget "ConnectHS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6E5EBE02FAB5F500010BA13 /* Debug */,
+				E6E5EBE12FAB5F500010BA13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A1A5E1000000000000000C1 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A1A5E1000000000000000B1 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A1A5E1000000000000000C1 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		5A1A5E1000000000000000B2 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A1A5E1000000000000000C1 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		5A1A5E1000000000000000B3 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A1A5E1000000000000000C1 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		5A1A5E1000000000000000B4 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A1A5E1000000000000000C1 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E6E5EBCC2FAB5F4D0010BA13 /* Project object */;
+}

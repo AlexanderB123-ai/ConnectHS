@@ -1,0 +1,22 @@
+// ConnectHS — example build configuration.
+//
+// SETUP (one-time, after fresh checkout):
+//   cp ConnectHS/Config.example.xcconfig ConnectHS/Config.xcconfig
+//   Then edit Config.xcconfig with your real Supabase project values.
+//
+// Config.xcconfig is gitignored — your real credentials never leave your
+// machine. This template is what gets committed.
+//
+// Find the values in your Supabase dashboard:
+//   - SUPABASE_URL host: Project Settings → API → Project URL (everything
+//     after https:// — for example "abcdefgh.supabase.co"). The https://
+//     prefix is added in code so the host stands alone here.
+//   - SUPABASE_ANON_KEY: Project Settings → API → "anon public" key. This
+//     ships in the iOS binary; RLS protects data, so it's safe.
+//
+// xcconfig syntax: `//` starts a comment, so URLs inside values must
+// escape it. We avoid that here by storing only the host (no scheme) and
+// prepending https:// in SupabaseClient.swift.
+
+SUPABASE_URL = YOUR_PROJECT_REF.supabase.co
+SUPABASE_ANON_KEY = YOUR_ANON_PUBLISHABLE_KEY

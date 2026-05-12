@@ -1,0 +1,41 @@
+# Block secrets and sensitive files from AI agent context.
+# Same syntax as .gitignore.
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Credentials and keys
+*.pem
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+secrets/
+
+# Xcode build configs that may hold secrets
+Config.xcconfig
+*.private.xcconfig
+
+# Apple developer files
+GoogleService-Info.plist
+AuthKey_*.p8
+
+# Local databases / caches
+*.sqlite
+*.db
+
+# Build artifacts (these are noisy, not sensitive)
+DerivedData/
+build/
+*.xcarchive
+.build/
+
+# Dependency caches
+node_modules/
+.swiftpm/
+
+# Personal scratch
+TODO.private.md
+NOTES.private.md

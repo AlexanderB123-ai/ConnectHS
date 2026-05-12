@@ -1,0 +1,81 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+build/
+DerivedData/
+*.xcarchive
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode user-specific config (keep schemes shared via xcshareddata/)
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+Packages/
+
+# CocoaPods / Carthage (not used, but ignore in case of accidents)
+Pods/
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+secrets/
+Config.xcconfig
+*.private.xcconfig
+GoogleService-Info.plist
+AuthKey_*.p8
+
+# Local databases / caches
+*.sqlite
+*.db
+
+# Supabase local
+supabase/.temp/
+supabase/.branches/
+
+# Personal scratch
+TODO.private.md
+NOTES.private.md
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cleanup holding folder (created during folder cleanup, review then rm)
+_archived/
+
+# Local Supabase credentials (template at Config.example.xcconfig)
+ConnectHS/Config.xcconfig

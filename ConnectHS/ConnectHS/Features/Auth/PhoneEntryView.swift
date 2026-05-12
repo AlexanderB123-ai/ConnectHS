@@ -1,0 +1,100 @@
+import SwiftUI
+
+struct PhoneEntryView: View {
+    @Bindable var viewModel: AuthViewModel
+    @FocusState private var isPhoneFocused: Bool
+
+    var body: some View {
+        ZStack {
+            Color.chCream.ignoresSafeArea()
+
+            VStack(spacing: Spacing.lg) {
+                Spacer()
+
+                Text("phone.title")
+                    .font(.chDisplay)
+                    .foregroundStyle(.chInk)
+
+                Text("phone.subtitle")
+                    .font(.chBody)
+                    .foregroundStyle(.chInkSoft)
+
+                HStack(spacing: Spacing.sm) {
+                    Text("+1")
+                        .font(.chHeadline)
+                        .foregroundStyle(.chInk)
+                        .padding(.horizontal, Spacing.md)
+                        .frame(height: 56)
+                        .background(
+                            RoundedRectangle(cornerRadius: CornerRadius.md)
+                                .fill(.white)
+                        )
+
+                    TextField("(555) 123-4567", text: $viewModel.phoneNumber)
+                        .font(.chHeadline)
+                        .keyboardType(.phonePad)
+                        .textContentType(.telephoneNumber)
+                        .focused($isPhoneFocused)
+                        .padding(.horizontal, Spacing.md)
+                        .frame(height: 56)
+                        .background(
+                            RoundedRectangle(cornerRadius: CornerRadius.md)
+                                .fill(.white)
+                        )
+                }
+                .padding(.horizontal, Spacing.md)
+
+                if let error = viewModel.otpError {
+                    Text(error)
+                        .font(.chCaption)
+                        .foregroundStyle(.chError)
+                }
+
+                Button {
+                    Task { await viewModel.sendOTP() }
+                } label: {
+                    Text("phone.send")
+                        .font(.chHeadline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(
+                            RoundedRectangle(cornerRadius: CornerRadius.md)
+                                .fill(isPhoneValid ? .chTether : .chInkSoft.opacity(0.3))
+                        )
+                }
+                .disabled(!isPhoneValid)
+                .padding(.horizontal, Spacing.md)
+
+                Spacer()
+                Spacer()
+            }
+        }
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: isAuthenticating) {
+            OTPEntryView(viewModel: viewModel)
+        }
+        .onAppear { isPhoneFocused = true }
+    }
+
+    private var isPhoneValid: Bool {
+        viewModel.phoneNumber.filter(\.isNumber).count >= 10
+    }
+
+    private var isAuthenticating: Binding<Bool> {
+        Binding(
+            get: {
+                if case .authenticating = viewModel.state { return true }
+                return false
+            },
+            set: { _ in }
+        )
+    }
+}
+
+#Preview {
+    NavigationStack {
+        PhoneEntryView(viewModel: AuthViewModel())
+    }
+}
