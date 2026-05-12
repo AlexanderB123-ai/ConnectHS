@@ -46,6 +46,15 @@ final class AppLaunchUITests: XCTestCase {
     /// NavigationLink wiring without triggering any actual auth (no `send`
     /// tap, no Supabase call). Useful as a structural check that
     /// RootView/NavigationStack composition isn't broken.
+    ///
+    /// Flake note: when this test runs immediately after the unit test
+    /// target in the same `xcodebuild test` invocation, the simulator's
+    /// accessibility server is sometimes slow to refresh after the
+    /// NavigationStack push, and `waitForExistence` returns false. Runs
+    /// pass reliably with `xcodebuild ... -only-testing:ConnectHSUITests`
+    /// on a fresh sim. To mitigate cross-target flakiness, we use an
+    /// `NSPredicate`-based wait (more aggressive retry) and a longer
+    /// timeout than the default.
     @MainActor
     func testTappingPhoneCTA_navigatesToPhoneEntry() throws {
         let app = XCUIApplication()
@@ -55,14 +64,15 @@ final class AppLaunchUITests: XCTestCase {
         XCTAssertTrue(phoneCTA.waitForExistence(timeout: 10))
         phoneCTA.tap()
 
-        // 10s timeout: NavigationStack push animation + simulator render
-        // can take several seconds on a cold automation session. Don't
-        // tighten this without testing on a clean sim.
         let title = app.staticTexts["phone.title"]
-        XCTAssertTrue(
-            title.waitForExistence(timeout: 10),
+        let exists = NSPredicate(format: "exists == true")
+        let titleExpectation = expectation(for: exists, evaluatedWith: title)
+        let result = XCTWaiter().wait(for: [titleExpectation], timeout: 15)
+        XCTAssertEqual(
+            result, .completed,
             "phone.title not found after tapping welcome's phone CTA — NavigationLink to PhoneEntryView may be broken."
         )
+
         let subtitle = app.staticTexts["phone.subtitle"]
         XCTAssertTrue(
             subtitle.waitForExistence(timeout: 3),

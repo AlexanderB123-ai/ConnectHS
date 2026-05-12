@@ -158,6 +158,7 @@ private final class StubPostService: PostServicing, @unchecked Sendable {
 
     func getFeed(groupId: UUID, date: Date) async throws -> [FeedPost] { [] }
     func getMemories(groupId: UUID) async throws -> [MemoryPost] { [] }
+    func getArchive(groupId: UUID, before: String?, limit: Int, onlyMine: Bool) async throws -> [ArchivePost] { [] }
 
     func toggleReaction(postId: UUID, reaction: ReactionType) async throws -> Bool {
         toggleCount += 1

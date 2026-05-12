@@ -29,9 +29,18 @@ final class ArchiveViewModel {
     var groups: [FriendGroup] = []
     var selectedGroup: FriendGroup?
 
-    private let postService = PostService()
-    private let groupService = GroupService()
+    private let postService: PostServicing
+    private let groupService: GroupServicing
     private let logger = Logger(subsystem: "com.connecths.app", category: "ArchiveVM")
+
+    /// See FeedViewModel.init for the nil-default rationale.
+    init(
+        postService: PostServicing? = nil,
+        groupService: GroupServicing? = nil
+    ) {
+        self.postService = postService ?? PostService()
+        self.groupService = groupService ?? GroupService()
+    }
 
     private let pageSize = 60
     private var oldestPromptDate: String?

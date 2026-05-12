@@ -9,6 +9,7 @@ import Storage
 protocol PostServicing: Sendable {
     func getFeed(groupId: UUID, date: Date) async throws -> [FeedPost]
     func getMemories(groupId: UUID) async throws -> [MemoryPost]
+    func getArchive(groupId: UUID, before: String?, limit: Int, onlyMine: Bool) async throws -> [ArchivePost]
     func toggleReaction(postId: UUID, reaction: ReactionType) async throws -> Bool
     func markViewed(postId: UUID) async throws
     func myReactions(postId: UUID, userId: UUID) async throws -> Set<ReactionType>

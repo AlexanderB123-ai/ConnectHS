@@ -198,6 +198,10 @@ private final class StubPostService: PostServicing, @unchecked Sendable {
         return memories
     }
 
+    func getArchive(groupId: UUID, before: String?, limit: Int, onlyMine: Bool) async throws -> [ArchivePost] {
+        []  // FeedVM tests don't exercise archive; archive tests use their own stub.
+    }
+
     func toggleReaction(postId: UUID, reaction: ReactionType) async throws -> Bool {
         if let toggleError { throw toggleError }
         return reactionResult

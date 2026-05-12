@@ -15,6 +15,7 @@
 		5A1A5E1000000000000000A3 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B3 /* PostgREST */; };
 		5A1A5E1000000000000000A4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1A5E1000000000000000B4 /* Storage */; };
 		60ECB238CB2E6A08E59C3EA7 /* ConnectHSWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7CA4885579972A96A455F552 /* ConnectHSWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D3BB400D099047BCF519A2E /* ArchiveViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E32CF17AFA8A0DE403C2D /* ArchiveViewModelTests.swift */; };
 		AC1CE442B13923397CC22174 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230D5349F06DAB360D946AD5 /* Foundation.framework */; };
 		BFB210691B9ED144DBA8B49F /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102648B4BB24ADA4715F922 /* AuthViewModelTests.swift */; };
 		CD9CF7A7A8AB89456FC855F5 /* InviteURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8AAAFF0DFA6444F33CCE36 /* InviteURLTests.swift */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		230D5349F06DAB360D946AD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		278E32CF17AFA8A0DE403C2D /* ArchiveViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ArchiveViewModelTests.swift; sourceTree = "<group>"; };
 		2C8426CA1E75F34F893F1021 /* ConnectHSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectHSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailViewModelTests.swift; sourceTree = "<group>"; };
 		4F8844913255DDE0293DAEFB /* LatestPostPayloadTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LatestPostPayloadTests.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				6BB89123FA398718B8E9BDB9 /* FeedViewModelTests.swift */,
 				3C7119F3563378B2B4FDE107 /* PostDetailViewModelTests.swift */,
 				F102648B4BB24ADA4715F922 /* AuthViewModelTests.swift */,
+				278E32CF17AFA8A0DE403C2D /* ArchiveViewModelTests.swift */,
 			);
 			name = ConnectHSTests;
 			path = ConnectHSTests;
@@ -391,6 +394,7 @@
 				2A542A357E7E051A3F01520D /* FeedViewModelTests.swift in Sources */,
 				D7EACC564B69633314797CFA /* PostDetailViewModelTests.swift in Sources */,
 				BFB210691B9ED144DBA8B49F /* AuthViewModelTests.swift in Sources */,
+				6D3BB400D099047BCF519A2E /* ArchiveViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
